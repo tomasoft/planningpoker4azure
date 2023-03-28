@@ -108,6 +108,6 @@ namespace PlanningPoker.Domain
         /// Gets default collection of estimation cards.
         /// </summary>
         /// <returns>The collection of estimation cards.</returns>
-        public IEnumerable<Estimation> GetDefaultDeck() => GetDeck(Deck.Standard);
+        public IEnumerable<Estimation> GetDefaultDeck() => GetDeck(Deck.Fibonacci);
     }
 }
