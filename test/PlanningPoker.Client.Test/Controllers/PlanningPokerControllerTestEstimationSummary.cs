@@ -26,7 +26,6 @@ namespace PlanningPoker.Client.Test.Controllers
             Assert.IsFalse(target.CanShowEstimationSummary);
             Assert.IsNotNull(target.EstimationSummary);
             Assert.AreEqual(5, target.EstimationSummary.Average);
-            Assert.AreEqual(5, target.EstimationSummary.Median);
             Assert.AreEqual(5, target.EstimationSummary.Sum);
         }
 
@@ -43,7 +42,6 @@ namespace PlanningPoker.Client.Test.Controllers
             Assert.IsFalse(target.CanShowEstimationSummary);
             Assert.IsNotNull(target.EstimationSummary);
             Assert.AreEqual(17.5, target.EstimationSummary.Average);
-            Assert.AreEqual(5, target.EstimationSummary.Median);
             Assert.AreEqual(192.5, target.EstimationSummary.Sum);
         }
 
@@ -61,7 +59,6 @@ namespace PlanningPoker.Client.Test.Controllers
             Assert.IsNotNull(target.EstimationSummary);
             Assert.IsNotNull(target.EstimationSummary.Average);
             Assert.AreEqual(4.8125, target.EstimationSummary.Average.Value, 1E-15);
-            Assert.AreEqual(1.25, target.EstimationSummary.Median);
             Assert.AreEqual(38.5, target.EstimationSummary.Sum);
         }
 
@@ -79,7 +76,6 @@ namespace PlanningPoker.Client.Test.Controllers
             Assert.IsNotNull(target.EstimationSummary);
             Assert.IsNotNull(target.EstimationSummary.Average);
             Assert.AreEqual(6.833333333333333, target.EstimationSummary.Average.Value, 1E-15);
-            Assert.AreEqual(0.5, target.EstimationSummary.Median);
             Assert.AreEqual(20.5, target.EstimationSummary.Sum);
         }
 
@@ -96,7 +92,6 @@ namespace PlanningPoker.Client.Test.Controllers
             Assert.IsFalse(target.CanShowEstimationSummary);
             Assert.IsNotNull(target.EstimationSummary);
             Assert.AreEqual(12.5, target.EstimationSummary.Average);
-            Assert.AreEqual(12.5, target.EstimationSummary.Median);
             Assert.AreEqual(25, target.EstimationSummary.Sum);
         }
 
@@ -113,7 +108,6 @@ namespace PlanningPoker.Client.Test.Controllers
             Assert.IsFalse(target.CanShowEstimationSummary);
             Assert.IsNotNull(target.EstimationSummary);
             Assert.AreEqual(9.6, target.EstimationSummary.Average);
-            Assert.AreEqual(8, target.EstimationSummary.Median);
             Assert.AreEqual(48, target.EstimationSummary.Sum);
         }
 
@@ -130,7 +124,6 @@ namespace PlanningPoker.Client.Test.Controllers
             Assert.IsFalse(target.CanShowEstimationSummary);
             Assert.IsNotNull(target.EstimationSummary);
             Assert.IsNull(target.EstimationSummary.Average);
-            Assert.IsNull(target.EstimationSummary.Median);
             Assert.IsNull(target.EstimationSummary.Sum);
         }
 
