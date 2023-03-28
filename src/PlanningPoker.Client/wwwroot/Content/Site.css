@@ -238,8 +238,8 @@ main a:focus, main a:hover, main a:not([href]):not([tabindex]):focus, main a:not
 
 .estimationResult .estimationItemValue {
     display: block;
-    width: 74px;
-    height: 105px;
+    width: 80px;
+    height: 121px;
     padding-top: 24px;
     background: url(images/cardbg.png) no-repeat center center;
     text-align: center;
