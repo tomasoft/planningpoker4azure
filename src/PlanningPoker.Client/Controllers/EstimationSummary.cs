@@ -22,7 +22,6 @@ namespace PlanningPoker.Client.Controllers
             {
                 Average = numericEstimations.Average();
                 Sum = numericEstimations.Sum();
-                Median = GetMedian(numericEstimations);
             }
         }
 
@@ -35,11 +34,6 @@ namespace PlanningPoker.Client.Controllers
         /// Gets sum of estimations.
         /// </summary>
         public double? Sum { get; }
-
-        /// <summary>
-        /// Gets median value of estimations.
-        /// </summary>
-        public double? Median { get; }
 
         private static bool IsNumericEstimation(MemberEstimation memberEstimation)
         {
