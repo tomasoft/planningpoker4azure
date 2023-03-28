@@ -8,7 +8,7 @@ variables:
 - name: BuildProjects
   value: PlanningPokerCore.sln
 - name: PublishProjects
-  value: src/Duracellko.PlanningPoker.Web/Duracellko.PlanningPoker.Web.csproj
+  value: src/PlanningPoker.Web/PlanningPoker.Web.csproj
 - group: DockerSettings
 
 trigger:

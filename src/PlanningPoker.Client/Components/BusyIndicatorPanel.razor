@@ -1,0 +1,42 @@
+﻿@implements IDisposable
+@inject UI.BusyIndicatorService BusyIndicatorService
+@inject IJSRuntime JsRuntime
+
+<div @ref="_busyIndicatorElement" class="modal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="modal-title">Processing...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code
+{
+    private ElementReference _busyIndicatorElement;
+
+    public void Dispose()
+    {
+        BusyIndicatorService.SetBusyIndicatorHandler(null);
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        BusyIndicatorService.SetBusyIndicatorHandler(SetVisibility);
+    }
+
+    private async void SetVisibility(bool visible)
+    {
+        StateHasChanged();
+        if (visible)
+        {
+            await JsRuntime.InvokeAsync<object>("Ploker.PlanningPoker.showBusyIndicator", _busyIndicatorElement);
+        }
+        else
+        {
+            await JsRuntime.InvokeAsync<object>("Ploker.PlanningPoker.hide", _busyIndicatorElement);
+        }
+    }
+}

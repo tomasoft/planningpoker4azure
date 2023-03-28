@@ -1,0 +1,23 @@
+@inherits LayoutComponentBase
+
+<div class="pageContent">
+    <div class="planningPokerContainer">
+        <header>
+            <NavBar />
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @Body
+            </main>
+        </div>
+    </div>
+
+    <BusyIndicatorPanel />
+    <GlobalMessagePanel />
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        Copyright &copy; @DateTime.Now.Year
+    </div>
+</footer>

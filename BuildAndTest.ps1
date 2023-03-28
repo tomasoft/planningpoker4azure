@@ -6,7 +6,7 @@ Param (
 $scriptDir = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 $buildConfiguration = 'Release'
 $buildProjects = Join-Path -Path $scriptDir -ChildPath 'PlanningPokerCore.sln'
-$webProject = Join-Path -Path $scriptDir '.\src\Duracellko.PlanningPoker.Web\Duracellko.PlanningPoker.Web.csproj'
+$webProject = Join-Path -Path $scriptDir '.\src\PlanningPoker.Web\PlanningPoker.Web.csproj'
 
 try {
 
@@ -61,7 +61,7 @@ try {
         }
 
         Write-Host "Step: End-2-End tests" -ForegroundColor Green
-        $e2eTestPath = Join-Path -Path $testPath -ChildPath 'Duracellko.PlanningPoker.E2ETest.dll'
+        $e2eTestPath = Join-Path -Path $testPath -ChildPath 'PlanningPoker.E2ETest.dll'
         Write-Host "dotnet test `"$e2eTestPath`" --logger:trx"
         & dotnet test $e2eTestPath --logger:trx
         if (!$?) {

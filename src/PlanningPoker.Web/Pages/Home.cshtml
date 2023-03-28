@@ -1,0 +1,73 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model PlanningPoker.Web.Model.HomeModel
+@{
+    Layout = null;
+    await Model.ClientScripts.Load();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scrum Planning Poker</title>
+    <base href="/" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    @foreach (var cssScript in Model.ClientScripts.CascadingStyleSheets)
+    {
+        <link href="//cdnjs.cloudflare.com/ajax/libs/@cssScript" rel="stylesheet"
+              onerror="this.onerror = null; this.href = 'lib/@cssScript.File'" />
+    }
+    <link href="Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <app id="app">
+        @if (Model.UseServerSide)
+        {
+            @(await Html.RenderComponentAsync<PlanningPoker.Client.App>(RenderMode.Server))
+        }
+        else
+        {
+            <div class="loader">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        }
+    </app>
+
+    <div id="blazor-error-ui" class="alert alert-warning alert-dismissible" role="alert">
+        <p>
+            <environment include="Staging,Production">
+                An error has occurred. This application may no longer respond until reloaded.
+            </environment>
+            <environment include="Development">
+                An unhandled exception has occurred. See browser dev tools for details.
+            </environment>
+        </p>
+        <button type="button" class="reload btn btn-warning">Reload</button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Dismiss"></button>
+    </div>
+
+@foreach (var jsScript in Model.ClientScripts.JavaScripts)
+    {
+        <script src="//cdnjs.cloudflare.com/ajax/libs/@jsScript"></script>
+    }
+
+    <script>window.bootstrap || document.write('<script src="lib/js/bootstrap.bundle.min.js"><\/script>')</script>
+
+<script src="Scripts/PlanningPoker.js"></script>
+@if (Model.UseServerSide)
+    {
+        <script src="_framework/blazor.server.js"></script>
+    }
+    else
+    {
+        <script src="_framework/blazor.webassembly.js"></script>
+    }
+</body>
+</html>

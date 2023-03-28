@@ -1,0 +1,303 @@
+/* Sticky footer styles */
+
+html {
+    position: relative;
+    min-height: 100%;
+    font-size: 14px;
+}
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+/* Loader */
+
+.loader {
+    width: 16em;
+    height: 8em;
+    position: relative;
+    overflow: hidden;
+}
+
+.loader::before,
+.loader::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+}
+
+.loader::before {
+    width: inherit;
+    height: 0.2em;
+    background-color: hsla(0, 0%, 85%);
+}
+
+.loader::after {
+    box-sizing: border-box;
+    width: 50%;
+    height: inherit;
+    border: 0.2em solid hsla(0, 0%, 85%);
+    border-radius: 50%;
+    left: 25%;
+}
+
+.loader span {
+    position: absolute;
+    width: 5%;
+    height: 10%;
+    background-color: white;
+    border-radius: 50%;
+    bottom: 0.2em;
+    left: -5%;
+    animation: 3s linear infinite;
+    transform-origin: 50% -3em;
+    animation-name: run, rotating;
+}
+
+.loader span:nth-child(2) {
+    animation-delay: 0.075s;
+}
+
+.loader span:nth-child(3) {
+    animation-delay: 0.150s;
+}
+
+.loader span:nth-child(4) {
+    animation-delay: 0.225s;
+}
+
+.loader span:nth-child(5) {
+    animation-delay: 0.300s;
+}
+
+@keyframes run {
+    0% {
+        left: -5%;
+    }
+
+    10%, 60% {
+        left: calc((100% - 5%) / 2);
+    }
+
+    70%, 100% {
+        left: 100%;
+    }
+}
+
+@keyframes rotating {
+    0%, 10% {
+        transform: rotate(0deg);
+    }
+
+    60%, 100% {
+        transform: rotate(-1turn);
+    }
+}
+
+/* Provide sufficient contrast against white background */
+main a, main a:not([href]):not([tabindex]) {
+    color: #0366d6;
+}
+
+main a:focus, main a:hover, main a:not([href]):not([tabindex]):focus, main a:not([href]):not([tabindex]):hover {
+    color: #23527c;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+#blazor-error-ui {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: none;
+}
+
+/* Members panel */
+
+.remove-member-btn {
+    --bs-btn-border-width: 0;
+    --bs-btn-padding-x: 0.25rem;
+    --bs-btn-padding-y: 0;
+    --bs-btn-color: #e7727d;
+    --bs-btn-hover-color: #dc3545;
+    --bs-btn-hover-bg: transparent;
+    --bs-btn-active-color: #dc3545;
+    --bs-btn-active-bg: transparent;
+}
+
+/* Poker desk */
+
+.pageContent {
+    padding-bottom: 30px;
+}
+
+.pageContent a {
+    cursor: pointer;
+}
+
+.pokerDeskPanel h2 {
+    color: #337ab7;
+    margin-top: 2px;
+}
+
+.pokerDeskPanel h3 {
+    color: #5cb85c;
+}
+
+.team-title {
+    margin: 2px 0px 10px 0px;
+}
+
+.team-title h2, .team-title h3 {
+    display: inline-block;
+    margin: 0px 18px 0px 0px;
+}
+
+.team-title .badge {
+    position: relative;
+    top: -3px;
+}
+
+/* Select estimation */
+
+.availableEstimations ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.availableEstimations li {
+    display: inline-block;
+    margin: 4px;
+    width: 74px;
+    height: 105px;
+    font-size: 32pt;
+    background: url(images/cardbg.png) no-repeat center center;
+}
+
+.availableEstimations a {
+    display: block;
+    width: 74px;
+    height: 105px;
+    padding-top: 24px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.availableEstimations a:hover {
+    text-decoration: none;
+}
+
+.availableEstimations a:active {
+    text-decoration: none;
+}
+
+/* Estimation result */
+
+.estimationResult ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.estimationResult li {
+    display: inline-block;
+    margin: 4px;
+    vertical-align: top;
+}
+
+.estimationResult .estimationItemValue {
+    display: block;
+    width: 74px;
+    height: 105px;
+    padding-top: 24px;
+    background: url(images/cardbg.png) no-repeat center center;
+    text-align: center;
+    font-size: 32pt;
+    color: #337ab7;
+}
+
+.estimationResult .estimationItemName {
+    display: block;
+    width: 74px;
+    padding: 3px 0 5px 0;
+    text-align: center;
+    font-size: 10pt;
+    font-weight: bold;
+    overflow-wrap: break-word;
+}
+
+/* Estimation summary */
+
+.estimationSummary {
+    margin-bottom: 0.5rem;
+}
+
+.estimationSummary .estimationSummaryItem {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    border: 1px solid #1861ac;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+    padding: 0 !important;
+}
+
+.estimationSummary .estimationSummaryTitle {
+    position: relative;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
+    border-top: 1px solid #1861ac;
+    border-bottom: 1px solid #1861ac;
+    border-left: 1px solid #1861ac;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    margin: -1px 0 -1px -1px;
+    padding: 5px 15px 5px 15px;
+    color: #fff;
+    background: #1b6ec2;
+}
+
+.estimationSummary .estimationSummaryValue {
+    position: relative;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
+    padding: 5px 15px 5px 15px;
+    font-weight: bold;
+    text-align: right;
+}

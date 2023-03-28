@@ -1,0 +1,58 @@
+﻿@page "/PlanningPoker"
+@page "/PlanningPoker/{TeamName}"
+@page "/PlanningPoker/{TeamName}/{MemberName}"
+@using global::PlanningPoker.Client.Controllers
+@using global::PlanningPoker.Client.Service
+@implements IDisposable
+@inject PlanningPokerController Controller
+@inject MessageReceiver MessageReceiver
+@inject INavigationManager NavigationManager
+
+@if (Controller.ScrumTeam != null)
+{
+    <div class="row">
+        <div class="col-md-4 mb-2">
+            <PlanningPoker.Client.Components.MembersPanel />
+        </div>
+
+        <div class="col-md-8">
+            <PlanningPoker.Client.Components.PlanningPokerDesk />
+        </div>
+    </div>
+
+    <PlanningPoker.Client.Components.PlanningPokerSettings />
+}
+
+@functions
+{
+    private IDisposable? _messageController;
+
+    [Parameter]
+    public string? TeamName { get; set; }
+
+    [Parameter]
+    public string? MemberName { get; set; }
+
+    public void Dispose()
+    {
+        if (_messageController != null)
+        {
+            _messageController.Dispose();
+            _messageController = null;
+        }
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        if (Controller.ScrumTeam == null)
+        {
+            ControllerHelper.OpenIndexPage(NavigationManager, TeamName, MemberName);
+        }
+        else
+        {
+            _messageController = MessageReceiver.StartReceiving(Controller);
+        }
+    }
+}

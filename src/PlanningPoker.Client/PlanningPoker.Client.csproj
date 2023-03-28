@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.3" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\PlanningPoker.Service\PlanningPoker.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- Copy wwwroot to outbut build directory for E2E tests -->
+  <Target Name="CopyWwwrootToOutput" AfterTargets="AfterBuild">
+    <ItemGroup>
+      <ClientWwwrootFiles Include="wwwroot\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ClientWwwrootFiles)" DestinationFiles="@(ClientWwwrootFiles->'$(OutDir)%(RelativeDir)%(Filename)%(Extension)')" />
+  </Target>
+
+  <Target Name="DeleteWwwrootFromOutput" BeforeTargets="BeforeClean">
+    <ItemGroup>
+      <ClientOutputWwwrootFiles Include="$(OutDir)wwwroot\**\*.*" />
+    </ItemGroup>
+    <Delete Files="@(ClientOutputWwwrootFiles)" />
+  </Target>
+  
+</Project>

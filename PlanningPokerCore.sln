@@ -3,27 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker.Domain", "src\Duracellko.PlanningPoker.Domain\Duracellko.PlanningPoker.Domain.csproj", "{65694878-9E06-4B0C-B4B8-FEB9EB98E64E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker.Domain", "src\PlanningPoker.Domain\PlanningPoker.Domain.csproj", "{65694878-9E06-4B0C-B4B8-FEB9EB98E64E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker.Domain.Test", "test\Duracellko.PlanningPoker.Domain.Test\Duracellko.PlanningPoker.Domain.Test.csproj", "{76CCA5BA-D53C-43DC-BD62-7E1CC7BF06AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker.Domain.Test", "test\PlanningPoker.Domain.Test\PlanningPoker.Domain.Test.csproj", "{76CCA5BA-D53C-43DC-BD62-7E1CC7BF06AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker", "src\Duracellko.PlanningPoker\Duracellko.PlanningPoker.csproj", "{53DB6376-CAE2-461C-9C66-7B93006A363E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker", "src\PlanningPoker\PlanningPoker.csproj", "{53DB6376-CAE2-461C-9C66-7B93006A363E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker.Test", "test\Duracellko.PlanningPoker.Test\Duracellko.PlanningPoker.Test.csproj", "{46FBC82B-9956-42EB-AECD-8F5928B4DAFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker.Test", "test\PlanningPoker.Test\PlanningPoker.Test.csproj", "{46FBC82B-9956-42EB-AECD-8F5928B4DAFD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker.Web", "src\Duracellko.PlanningPoker.Web\Duracellko.PlanningPoker.Web.csproj", "{E6A0A645-D69E-40DA-A778-E706FDA84E2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker.Web", "src\PlanningPoker.Web\PlanningPoker.Web.csproj", "{E6A0A645-D69E-40DA-A778-E706FDA84E2B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker.Azure", "src\Duracellko.PlanningPoker.Azure\Duracellko.PlanningPoker.Azure.csproj", "{6502FC2A-CCFF-4A38-93D3-16BB084BAAEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker.Azure", "src\PlanningPoker.Azure\PlanningPoker.Azure.csproj", "{6502FC2A-CCFF-4A38-93D3-16BB084BAAEA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker.Azure.Test", "test\Duracellko.PlanningPoker.Azure.Test\Duracellko.PlanningPoker.Azure.Test.csproj", "{5313B324-0F9C-48C2-A453-2363C104DE82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker.Azure.Test", "test\PlanningPoker.Azure.Test\PlanningPoker.Azure.Test.csproj", "{5313B324-0F9C-48C2-A453-2363C104DE82}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker.Client", "src\Duracellko.PlanningPoker.Client\Duracellko.PlanningPoker.Client.csproj", "{4BD658E6-D2AB-4275-B954-5E600C43D3BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker.Client", "src\PlanningPoker.Client\PlanningPoker.Client.csproj", "{4BD658E6-D2AB-4275-B954-5E600C43D3BF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker.Service", "src\Duracellko.PlanningPoker.Service\Duracellko.PlanningPoker.Service.csproj", "{02D40C8C-C33D-4310-9DD6-B620E475DE4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker.Service", "src\PlanningPoker.Service\PlanningPoker.Service.csproj", "{02D40C8C-C33D-4310-9DD6-B620E475DE4E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker.Client.Test", "test\Duracellko.PlanningPoker.Client.Test\Duracellko.PlanningPoker.Client.Test.csproj", "{04EBA544-0B81-463A-8949-542F28F031A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker.Client.Test", "test\PlanningPoker.Client.Test\PlanningPoker.Client.Test.csproj", "{04EBA544-0B81-463A-8949-542F28F031A5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker.E2ETest", "test\Duracellko.PlanningPoker.E2ETest\Duracellko.PlanningPoker.E2ETest.csproj", "{108112D4-6A84-4A45-8D2F-BAD38C9D4D11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker.E2ETest", "test\PlanningPoker.E2ETest\PlanningPoker.E2ETest.csproj", "{108112D4-6A84-4A45-8D2F-BAD38C9D4D11}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9BE135A3-3D75-40BD-BA92-5961167FD719}"
 EndProject
@@ -38,9 +38,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{30E235
 		src\stylecop.json = src\stylecop.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Duracellko.PlanningPoker.Redis", "src\Duracellko.PlanningPoker.Redis\Duracellko.PlanningPoker.Redis.csproj", "{B5F7A7A3-C1F5-4497-98FE-6659932DDBCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanningPoker.Redis", "src\PlanningPoker.Redis\PlanningPoker.Redis.csproj", "{B5F7A7A3-C1F5-4497-98FE-6659932DDBCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duracellko.PlanningPoker.Redis.Test", "test\Duracellko.PlanningPoker.Redis.Test\Duracellko.PlanningPoker.Redis.Test.csproj", "{EDD1B4E6-C1DE-45F6-A86A-ABEA17C30CEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanningPoker.Redis.Test", "test\PlanningPoker.Redis.Test\PlanningPoker.Redis.Test.csproj", "{EDD1B4E6-C1DE-45F6-A86A-ABEA17C30CEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
