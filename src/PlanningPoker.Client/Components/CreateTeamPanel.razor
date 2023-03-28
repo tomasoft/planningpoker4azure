@@ -1,7 +1,7 @@
 ﻿@using PlanningPoker.Client.Controllers
 @using PlanningPoker.Service
 @inherits ViewComponentBase
-@inject CreateTeamController Controller
+@inject CreateTeamController CreateController
 
 <div class="card">
     <h5 class="card-header">Create team</h5>
@@ -48,7 +48,7 @@
 
 @code
 {
-    private IEnumerable<KeyValuePair<Deck, string>> EstimationDecks => Controller.EstimationDecks;
+    private IEnumerable<KeyValuePair<Deck, string>> EstimationDecks => CreateController.EstimationDecks;
 
     private string? TeamName { get; set; }
 
@@ -72,7 +72,7 @@
             ScrumMasterName = string.Empty;
         }
 
-        return TryRun(() => Controller.CreateTeam(TeamName, ScrumMasterName, SelectedDeck));
+        return TryRun(() => CreateController.CreateTeam(TeamName, ScrumMasterName, SelectedDeck));
     }
 
     private string GetFormControlCss(bool valid) => valid ? "form-control" : "form-control is-invalid";

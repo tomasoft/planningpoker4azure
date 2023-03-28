@@ -1,0 +1,178 @@
+﻿@using PlanningPoker.Client.Controllers
+@using PlanningPoker.Service
+@inherits ViewComponentBase
+@inject JoinTeamController JoinController
+@inject CreateTeamController CreateController
+
+<div class="section">
+    <div class="container">
+        <div class="row justify-content-center pt-5">
+            <div class="col-12 text-center align-self-center">
+                <div class="section pt-sm-2 text-center">
+                    <h6 class="mb-0"><span>Join</span><span>Create</span></h6>
+                    <input class="sessionMode" type="checkbox" id="reg-log" name="reg-log" />
+                    <label for="reg-log"></label>
+                    <div class="card-3d-wrap mx-auto">
+                        <div class="card-3d-wrapper">
+                            <div class="card-front">
+                                <div class="center-wrap">
+                                    <div class="section text-center">
+                                        <form name="joinTeam" action="." @onsubmit="JoinTeamCommand">
+                                            <div class="form-group">
+                                                <input type="text" name="userName" placeholder="Team Name" id="joinTeam$teamName" autocomplete="on" @bind="TeamName"
+                                                       class="form-style @GetFormControlCss(IsTeamNameValid)" maxlength="50" />
+                                                <i class="input-icon uil uil-store"></i>
+                                                @if (!IsTeamNameValid)
+                                                {
+                                                    <span class="invalid-feedback">Required</span>
+                                                }
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input type="text" name="memberName" class="form-style @GetFormControlCss(IsMemberNameValid)" @bind="MemberName" placeholder="Member name" id="joinTeam$memberName" autocomplete="off" maxlength="40">
+                                                <i class="input-icon uil uil-user"></i>
+                                                @if (!IsMemberNameValid)
+                                                {
+                                                    <span class="invalid-feedback">Required</span>
+                                                }
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <span class="checkBoxLabel">Join As Observer:
+                                                    <input type="checkbox" id="joinTeam$asObserver" name="asObserver" @bind="AsObserver" class="form-style" />
+                                                </span>
+                                            </div>
+                                            <input id="joinTeam$submit" class="btn mt-4" name="submitForm" value="Join" type="submit">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="center-wrap">
+                                    <div class="section text-center">
+                                        <form name="createTeam" action="." @onsubmit="CreateTeamCommand">
+                                            <div class="form-group">
+                                                <input type="text" name="teamName" class="form-style @GetFormControlCss(IsTeamNameValid)" placeholder="Team Name"
+                                                       id="createTeam$teamName" @bind="TeamName" maxlength="50" />
+                                                <i class="input-icon uil uil-store"></i>
+                                                @if (!IsTeamNameValid)
+                                                {
+                                                    <span class="invalid-feedback">Required</span>
+                                                }
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input type="text" name="scrumMasterName" class="form-style @GetFormControlCss(IsScrumMasterNameValid)" placeholder="Host Name" id="createTeam$scrumMasterName" autocomplete="off" @bind="ScrumMasterName" maxlength="50" />
+                                                <i class="input-icon uil uil-user "></i>
+                                                @if (!IsScrumMasterNameValid)
+                                                {
+                                                    <span class="invalid-feedback">Required</span>
+                                                }
+                                            </div>
+                                            <input id="createTeam$Submit" class="btn mt-4" name="submitForm" value="Create" type="submit">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code
+{
+    [Parameter]
+    public string? TeamName { get; set; }
+
+    [Parameter]
+    public string? MemberName { get; set; }
+
+    private bool AsObserver { get; set; }
+
+    private bool IsTeamNameValid => TeamName == null || !string.IsNullOrWhiteSpace(TeamName);
+
+    private bool IsMemberNameValid => MemberName == null || !string.IsNullOrWhiteSpace(MemberName);
+
+    private IEnumerable<KeyValuePair<Deck, string>> EstimationDecks => CreateController.EstimationDecks;
+
+    private string? ScrumMasterName { get; set; }
+
+    private Deck SelectedDeck { get; set; }
+
+    private bool IsScrumMasterNameValid => ScrumMasterName == null || !string.IsNullOrWhiteSpace(ScrumMasterName);
+
+
+    protected override async Task OnParametersSetAsync()
+    {
+        base.OnParametersSet();
+
+        bool hasReconnected = false;
+        if (!string.IsNullOrEmpty(TeamName) && !string.IsNullOrEmpty(MemberName))
+        {
+            try
+            {
+                hasReconnected = await JoinController.TryReconnectTeam(TeamName, MemberName);
+            }
+            catch (Exception)
+            {
+    // Ignore error. User can connect manually.
+            }
+
+            MemberName = null;
+        }
+
+        if (!hasReconnected)
+        {
+            await SetDefaultValues();
+        }
+    }
+
+    private Task JoinTeamCommand()
+    {
+        if (TeamName == null)
+        {
+            TeamName = string.Empty;
+        }
+
+        if (MemberName == null)
+        {
+            MemberName = string.Empty;
+        }
+
+        return TryRun(() => JoinController.JoinTeam(TeamName, MemberName, AsObserver));
+    }
+
+    private async Task SetDefaultValues()
+    {
+        var memberCredentials = await JoinController.GetCredentials();
+        if (memberCredentials != null)
+        {
+            if (string.IsNullOrEmpty(TeamName))
+            {
+                TeamName = memberCredentials.TeamName;
+            }
+
+            if (string.IsNullOrEmpty(MemberName))
+            {
+                MemberName = memberCredentials.MemberName;
+            }
+        }
+    }
+
+    private Task CreateTeamCommand()
+    {
+        if (TeamName == null)
+        {
+            TeamName = string.Empty;
+        }
+
+        if (ScrumMasterName == null)
+        {
+            ScrumMasterName = string.Empty;
+        }
+
+        return TryRun(() => CreateController.CreateTeam(TeamName, ScrumMasterName, SelectedDeck));
+    }
+
+    private string GetFormControlCss(bool valid) => valid ? "form-control" : "form-control is-invalid";
+}

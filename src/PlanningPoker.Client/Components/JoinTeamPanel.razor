@@ -1,6 +1,6 @@
 ﻿@using PlanningPoker.Client.Controllers
 @inherits ViewComponentBase
-@inject JoinTeamController Controller
+@inject JoinTeamController JoinController
 
 <div class="card">
     <h5 class="card-header">Join team</h5>
@@ -62,7 +62,7 @@
         {
             try
             {
-                hasReconnected = await Controller.TryReconnectTeam(TeamName, MemberName);
+                hasReconnected = await JoinController.TryReconnectTeam(TeamName, MemberName);
             }
             catch (Exception)
             {
@@ -90,12 +90,12 @@
             MemberName = string.Empty;
         }
 
-        return TryRun(() => Controller.JoinTeam(TeamName, MemberName, AsObserver));
+        return TryRun(() => JoinController.JoinTeam(TeamName, MemberName, AsObserver));
     }
 
     private async Task SetDefaultValues()
     {
-        var memberCredentials = await Controller.GetCredentials();
+        var memberCredentials = await JoinController.GetCredentials();
         if (memberCredentials != null)
         {
             if (string.IsNullOrEmpty(TeamName))
