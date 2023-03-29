@@ -157,7 +157,7 @@ namespace PlanningPoker.Domain.Test
             var member = (Member)team.Join("member", false);
             master.StartEstimation();
             var masterEstimation = new Estimation(8);
-            var memberEstimation = new Estimation(20);
+            var memberEstimation = new Estimation(21);
 
             // Act
             master.Estimation = masterEstimation;
@@ -225,7 +225,7 @@ namespace PlanningPoker.Domain.Test
             var master = team.SetScrumMaster("master");
             var member = (Member)team.Join("member", false);
             master.StartEstimation();
-            var memberEstimation = new Estimation(100);
+            var memberEstimation = new Estimation(89);
 
             // Act
             member.Estimation = memberEstimation;
@@ -308,7 +308,7 @@ namespace PlanningPoker.Domain.Test
             master.StartEstimation();
             MessageReceivedEventArgs? eventArgs = null;
             team.MessageReceived += new EventHandler<MessageReceivedEventArgs>((s, e) => eventArgs = e);
-            var masterEstimation = new Estimation(20);
+            var masterEstimation = new Estimation(21);
             var memberEstimation = new Estimation(3);
 
             // Act
@@ -382,7 +382,7 @@ namespace PlanningPoker.Domain.Test
             master.StartEstimation();
             master.ClearMessages();
             var masterEstimation = new Estimation(5);
-            var memberEstimation = new Estimation(40);
+            var memberEstimation = new Estimation(34);
             EventArgs? eventArgs = null;
             master.MessageReceived += new EventHandler((s, e) => eventArgs = e);
 
@@ -546,8 +546,8 @@ namespace PlanningPoker.Domain.Test
             var member = (Member)team.Join("member", false);
             var observer = team.Join("observer", true);
             master.StartEstimation();
-            var masterEstimation = new Estimation(20);
-            var memberEstimation = new Estimation(40);
+            var masterEstimation = new Estimation(21);
+            var memberEstimation = new Estimation(34);
 
             // Act
             master.Estimation = masterEstimation;
@@ -617,7 +617,7 @@ namespace PlanningPoker.Domain.Test
             var team = new ScrumTeam("test team");
             var master = team.SetScrumMaster("master");
             master.StartEstimation();
-            var masterEstimation = new Estimation(55.0);
+            var masterEstimation = new Estimation(100);
 
             // Act
             Assert.ThrowsException<ArgumentException>(() => master.Estimation = masterEstimation);

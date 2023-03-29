@@ -29,7 +29,7 @@ namespace PlanningPoker.Client.Test.Components
             var controller = CreateCreateTeamController();
             InitializeContext(controller);
 
-            using var target = _context.RenderComponent<CreateTeamPanel>();
+            using var target = _context.RenderComponent<SessionPanel>();
 
             var teamNameElement = target.Find("input[name=teamName]");
             Assert.AreEqual("form-control", teamNameElement.ClassName);
@@ -48,7 +48,7 @@ namespace PlanningPoker.Client.Test.Components
             var controller = CreateCreateTeamController();
             InitializeContext(controller);
 
-            using var target = _context.RenderComponent<CreateTeamPanel>();
+            using var target = _context.RenderComponent<SessionPanel>();
 
             var teamNameElement = target.Find("input[name=teamName]");
             teamNameElement.Change(PlanningPokerData.TeamName);
@@ -72,7 +72,7 @@ namespace PlanningPoker.Client.Test.Components
             var controller = CreateCreateTeamController();
             InitializeContext(controller);
 
-            using var target = _context.RenderComponent<CreateTeamPanel>();
+            using var target = _context.RenderComponent<SessionPanel>();
 
             var teamNameElement = target.Find("input[name=teamName]");
             teamNameElement.Change(PlanningPokerData.TeamName);
@@ -100,7 +100,7 @@ namespace PlanningPoker.Client.Test.Components
             var controller = CreateCreateTeamController();
             InitializeContext(controller);
 
-            using var target = _context.RenderComponent<CreateTeamPanel>();
+            using var target = _context.RenderComponent<SessionPanel>();
 
             var teamNameElement = target.Find("input[name=teamName]");
             teamNameElement.Change(PlanningPokerData.TeamName);
@@ -129,7 +129,7 @@ namespace PlanningPoker.Client.Test.Components
             var controller = CreateCreateTeamController(planningPokerClient: planningPokerClient.Object);
             InitializeContext(controller);
 
-            using var target = _context.RenderComponent<CreateTeamPanel>();
+            using var target = _context.RenderComponent<SessionPanel>();
 
             var teamNameElement = target.Find("input[name=teamName]");
             teamNameElement.Change(PlanningPokerData.TeamName);

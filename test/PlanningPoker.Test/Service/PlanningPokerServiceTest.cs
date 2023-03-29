@@ -93,13 +93,13 @@ namespace PlanningPoker.Test.Service
             var team = CreateBasicTeam();
             var teamLock = CreateTeamLock(team);
             var planningPoker = new Mock<IPlanningPoker>(MockBehavior.Strict);
-            planningPoker.Setup(p => p.CreateScrumTeam(TeamName, ScrumMasterName, Domain.Deck.Standard))
+            planningPoker.Setup(p => p.CreateScrumTeam(TeamName, ScrumMasterName, Domain.Deck.Fibonacci))
                 .Returns(teamLock.Object).Verifiable();
 
             var target = CreatePlanningPokerService(planningPoker.Object);
 
             // Act
-            var result = target.CreateTeam(TeamName, ScrumMasterName, Deck.Standard).Value;
+            var result = target.CreateTeam(TeamName, ScrumMasterName, Deck.Fibonacci).Value;
 
             // Verify
             Assert.IsNotNull(result);
@@ -107,7 +107,7 @@ namespace PlanningPoker.Test.Service
             Assert.IsNotNull(resultTeam?.AvailableEstimations);
             var expectedCollection = new double?[]
             {
-                0.0, 0.5, 1.0, 2.0, 3.0, 5.0, 8.0, 13.0, 20.0, 40.0, 100.0, PlanningPoker.Service.Estimation.PositiveInfinity, null
+                0.0, 1.0, 2.0, 3.0, 5.0, 8.0, 13.0, 21.0, 34.0, 55.0, 89.0, double.PositiveInfinity, null
             };
             CollectionAssert.AreEquivalent(expectedCollection, resultTeam.AvailableEstimations.Select(e => e.Value).ToList());
         }

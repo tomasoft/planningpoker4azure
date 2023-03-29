@@ -156,7 +156,7 @@ namespace PlanningPoker.Domain.Test.Serialization
             master.StartEstimation();
             team.Join("Bob", true);
             team.Join("Alice", false);
-            member.Estimation = team.AvailableEstimations.Single(e => e.Value == 0.5);
+            member.Estimation = team.AvailableEstimations.Single(e => e.Value == 1);
             master.Estimation = team.AvailableEstimations.Single(e => e.Value.HasValue && double.IsPositiveInfinity(e.Value.Value));
 
             // Act
@@ -208,7 +208,7 @@ namespace PlanningPoker.Domain.Test.Serialization
             master.StartEstimation();
             team.Join("Bob", true);
             team.Join("Alice", false);
-            member.Estimation = team.AvailableEstimations.Single(e => e.Value == 0.5);
+            member.Estimation = team.AvailableEstimations.Single(e => e.Value == 1);
             master.Estimation = team.AvailableEstimations.Single(e => e.Value.HasValue && double.IsPositiveInfinity(e.Value.Value));
             team.Disconnect(observer.Name);
             team.Disconnect(member.Name);

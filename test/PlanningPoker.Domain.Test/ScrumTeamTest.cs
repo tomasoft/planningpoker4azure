@@ -99,7 +99,7 @@ namespace PlanningPoker.Domain.Test
             // Verify
             var expectedCollection = new double?[]
             {
-                0.0, 0.5, 1.0, 2.0, 3.0, 5.0, 8.0, 13.0, 20.0, 40.0, 100.0, double.PositiveInfinity, null
+                0.0, 1.0, 2.0, 3.0, 5.0, 8.0, 13.0, 21.0, 34.0, 55.0, 89.0, double.PositiveInfinity, null
             };
             CollectionAssert.AreEquivalent(expectedCollection, result.Select(e => e.Value).ToList());
         }
@@ -117,7 +117,7 @@ namespace PlanningPoker.Domain.Test
             // Verify
             var expectedCollection = new double?[]
             {
-                0.0, 0.5, 1.0, 2.0, 3.0, 5.0, 8.0, 13.0, 20.0, 40.0, 100.0, double.PositiveInfinity, null
+                0.0, 1.0, 2.0, 3.0, 5.0, 8.0, 13.0, 21.0, 34.0, 55.0, 89.0, double.PositiveInfinity, null
             };
             CollectionAssert.AreEquivalent(expectedCollection, result.Select(e => e.Value).ToList());
         }
@@ -1539,7 +1539,7 @@ namespace PlanningPoker.Domain.Test
             var target = new ScrumTeam("test team");
             var master = target.SetScrumMaster("master");
             master.StartEstimation();
-            master.Estimation = new Estimation(20.0);
+            master.Estimation = new Estimation(21.0);
 
             var newEstimationsSet = DeckProvider.Default.GetDeck(Deck.Rating);
             MessageReceivedEventArgs? eventArgs = null;

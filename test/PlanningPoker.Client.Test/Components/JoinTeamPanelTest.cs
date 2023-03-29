@@ -30,7 +30,7 @@ namespace PlanningPoker.Client.Test.Components
             var controller = CreateJoinTeamController();
             InitializeContext(controller);
 
-            using var target = _context.RenderComponent<JoinTeamPanel>();
+            using var target = _context.RenderComponent<SessionPanel>();
 
             var teamNameElement = target.Find("input[name=teamName]");
             Assert.AreEqual("form-control", teamNameElement.ClassName);
@@ -49,7 +49,7 @@ namespace PlanningPoker.Client.Test.Components
             var controller = CreateJoinTeamController();
             InitializeContext(controller);
 
-            using var target = _context.RenderComponent<JoinTeamPanel>();
+            using var target = _context.RenderComponent<SessionPanel>();
 
             var teamNameElement = target.Find("input[name=teamName]");
             teamNameElement.Change(PlanningPokerData.TeamName);
@@ -73,7 +73,7 @@ namespace PlanningPoker.Client.Test.Components
             var controller = CreateJoinTeamController();
             InitializeContext(controller);
 
-            using var target = _context.RenderComponent<JoinTeamPanel>();
+            using var target = _context.RenderComponent<SessionPanel>();
 
             var teamNameElement = target.Find("input[name=teamName]");
             teamNameElement.Change(PlanningPokerData.TeamName);
@@ -101,7 +101,7 @@ namespace PlanningPoker.Client.Test.Components
             var controller = CreateJoinTeamController();
             InitializeContext(controller);
 
-            using var target = _context.RenderComponent<JoinTeamPanel>();
+            using var target = _context.RenderComponent<SessionPanel>();
 
             var teamNameElement = target.Find("input[name=teamName]");
             teamNameElement.Change(PlanningPokerData.TeamName);
@@ -132,7 +132,7 @@ namespace PlanningPoker.Client.Test.Components
             var controller = CreateJoinTeamController(planningPokerClient: planningPokerClient.Object);
             InitializeContext(controller);
 
-            using var target = _context.RenderComponent<JoinTeamPanel>();
+            using var target = _context.RenderComponent<SessionPanel>();
 
             var teamNameElement = target.Find("input[name=teamName]");
             teamNameElement.Change(PlanningPokerData.TeamName);
@@ -153,7 +153,7 @@ namespace PlanningPoker.Client.Test.Components
             var controller = CreateJoinTeamController();
             InitializeContext(controller);
 
-            using var target = _context.RenderComponent<JoinTeamPanel>(
+            using var target = _context.RenderComponent<SessionPanel>(
                 ComponentParameter.CreateParameter("TeamName", PlanningPokerData.TeamName),
                 ComponentParameter.CreateParameter("MemberName", PlanningPokerData.MemberName));
 
@@ -178,7 +178,7 @@ namespace PlanningPoker.Client.Test.Components
             planningPokerClient.Setup(o => o.ReconnectTeam(PlanningPokerData.TeamName, PlanningPokerData.MemberName, It.IsAny<CancellationToken>()))
                 .ReturnsAsync(PlanningPokerData.GetReconnectTeamResult());
 
-            using var target = _context.RenderComponent<JoinTeamPanel>(
+            using var target = _context.RenderComponent<SessionPanel>(
                 ComponentParameter.CreateParameter("TeamName", PlanningPokerData.TeamName),
                 ComponentParameter.CreateParameter("MemberName", PlanningPokerData.MemberName));
 
@@ -202,7 +202,7 @@ namespace PlanningPoker.Client.Test.Components
             planningPokerClient.Setup(o => o.ReconnectTeam(PlanningPokerData.TeamName, PlanningPokerData.MemberName, It.IsAny<CancellationToken>()))
                 .ThrowsAsync(new InvalidOperationException());
 
-            using var target = _context.RenderComponent<JoinTeamPanel>(
+            using var target = _context.RenderComponent<SessionPanel>(
                 ComponentParameter.CreateParameter("TeamName", PlanningPokerData.TeamName),
                 ComponentParameter.CreateParameter("MemberName", PlanningPokerData.MemberName));
 
@@ -222,7 +222,7 @@ namespace PlanningPoker.Client.Test.Components
             memberCredentialsStore.Setup(o => o.GetCredentialsAsync(true))
                 .ReturnsAsync(new MemberCredentials { TeamName = PlanningPokerData.TeamName, MemberName = PlanningPokerData.MemberName });
 
-            using var target = _context.RenderComponent<JoinTeamPanel>();
+            using var target = _context.RenderComponent<SessionPanel>();
 
             var teamNameElement = (IHtmlInputElement)target.Find("input[name=teamName]").Unwrap();
             Assert.AreEqual(PlanningPokerData.TeamName, teamNameElement.Value);
