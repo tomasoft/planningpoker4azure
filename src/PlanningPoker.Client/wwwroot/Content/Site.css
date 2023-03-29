@@ -24,6 +24,7 @@ body {
 .appName {
     font-weight: bolder;
     font-size: xx-large;
+    margin-right: 1em;
 }
 
 @media(max-width: 1000px) {
