@@ -51,7 +51,7 @@
                                         <form name="createTeam" action="." @onsubmit="CreateTeamCommand">
                                             <div class="form-group">
                                                 <input type="text" name="teamName" class="form-style @GetFormControlCss(IsTeamNameValid)" placeholder="Team Name"
-                                                       id="createTeam$teamName" @bind="TeamName" maxlength="50" />
+                                                       id="createTeam$teamName" @bind="TeamName" maxlength="50"/>
                                                 <i class="input-icon uil uil-store"></i>
                                                 @if (!IsTeamNameValid)
                                                 {
@@ -59,7 +59,7 @@
                                                 }
                                             </div>
                                             <div class="form-group mt-2">
-                                                <input type="text" name="scrumMasterName" class="form-style @GetFormControlCss(IsScrumMasterNameValid)" placeholder="Host Name" id="createTeam$scrumMasterName" autocomplete="off" @bind="ScrumMasterName" maxlength="50" />
+                                                <input type="text" name="scrumMasterName" class="form-style @GetFormControlCss(IsScrumMasterNameValid)" placeholder="Host Name" id="createTeam$scrumMasterName" autocomplete="off" @bind="ScrumMasterName" maxlength="50"/>
                                                 <i class="input-icon uil uil-user "></i>
                                                 @if (!IsScrumMasterNameValid)
                                                 {
