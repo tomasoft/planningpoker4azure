@@ -4,9 +4,14 @@
 @inject PlanningPokerController Controller
 @inject NavigationManager NavigationManager
 
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-    <div class="container">
-        <a class="navbar-brand" href="https://scrum-planning.net" target="_blank">Ploker</a>
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+    <div class="container custom-container">
+        <a class="navbar-brand" href="https://scrum-planning.net" target="_blank">
+            <span class="appName">
+                Ploker
+            </span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigationBar" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -14,18 +19,24 @@
         <div id="mainNavigationBar" class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
             @if (IsConnected)
             {
-                <ul class="navbar-nav flex-grow-1 justify-content-end">
-                    <li class="nav-item">
+                <ul class="navbar-nav flex-grow-1 justify-content-center text-center">
+                    <li class="link-info nav-item">
                         <a href="#" class="nav-link" role="button" data-bs-toggle="modal" data-bs-target="#planningPokerSettingsModal">
                             <span class="oi oi-cog" aria-hidden="true"></span> Settings
                         </a>
                     </li>
                     <li class="nav-item">
                         <a @onclick="DisconnectCommand" class="nav-link">
-                            <span class="oi oi-account-logout" aria-hidden="true"></span> Exit Session
+                            <span class="oi oi-account-logout" aria-hidden="true"></span> Disconnect
                         </a>
                     </li>
                 </ul>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" type="button" onclick="CopyValue()"><span class="copy-icon uil uil-copy"></span></button>
+                    </div>
+                    <input type="text" id="sessionUrl" class="form-control" placeholder="" aria-label="" value="@(GetSessionUrl())" disabled="disabled">
+                </div>
             }
         </div>
     </div>
@@ -53,6 +64,11 @@
             await Controller.Disconnect();
             NavigationManager.NavigateTo("Index");
         });
+    }
+
+    private string GetSessionUrl()
+    {
+        return $"{NavigationManager.BaseUri}PlanningPoker/{Controller.ScrumTeam?.Name}";
     }
 
     private void ControllerOnPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)

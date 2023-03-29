@@ -88,3 +88,10 @@
 
     Ploker.PlanningPoker = PlanningPoker;
 })(Ploker || (Ploker = {}));
+
+function CopyValue() {
+    var copyText = document.getElementById("sessionUrl");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+}
